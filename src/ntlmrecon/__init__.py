@@ -51,7 +51,6 @@ def main():
         else:
             records = readfile_and_gen_input(args.infile, shuffle=False)
 
-    print(records)
 
 
 #(json.dumps(results))
