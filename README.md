@@ -64,12 +64,13 @@ Arguments:
 NTLM recon automatically detects the type of input per line and gives you results automatically.
 CIDR ranges are expanded automatically even when read from a text file.
 
-Input file can be something as complex as :
+Input file can be something as mixed up as :
 
 <pre>
 mail.contoso.com
 CONTOSOHOSTNAME
-10.0.13.2/24
+10.0.13.2/28
+192.168.222.1/24
 https://mail.contoso.com
 </pre>
 
