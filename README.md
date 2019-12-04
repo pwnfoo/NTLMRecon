@@ -2,7 +2,7 @@
 
 A fast NTLM reconnaissance tool without external dependencies written. Written for red teams <3
 
-> Work in Progess. Thinks may break and change at anytime
+> Work in Progess. Things may break and change at anytime
 
 NTLMRecon is built with flexibilty in mind. Need to run recon on a single URL, an IP address, an entire CIDR range or combination of all of it all put in a single input file?
 
