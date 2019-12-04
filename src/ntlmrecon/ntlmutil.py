@@ -9,8 +9,8 @@ import struct
 import string
 import collections
 from random import choice
-from urllib.parse import urlsplit, urlunsplit
 import json
+
 
 
 # We are hackers. SSL warnings don't stop us, although this is not recommended.
@@ -21,14 +21,6 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 VALID_CHRS = set(string.ascii_letters + string.digits + string.punctuation)
 
 FOUND_DOMAINS = ['google.com']
-
-
-def in_found_domains(url):
-    split_url = urlsplit(url)
-    if split_url.hostname in FOUND_DOMAINS:
-        return True
-    else:
-        return False
 
 def clean_str(st):
     return ''.join((s if s in VALID_CHRS else '?') for s in st)
@@ -193,9 +185,7 @@ def gather_ntlm_info(url):
         if ntlm_check_response:
             if type(ntlm_check_response) is not bool:
                 if 'FAIL ' in ntlm_check_response:
-                    response_data[url]['meta']['status'] = 'fail'
-                    response_data[url]['meta']['reason'] = ntlm_check_response.split(' ')[1]
-                    return response_data
+                    return False
             # Send a random auth header to get response with NTLMSSP data
             headers = {
                 'Authorization' : 'NTLM TlRMTVNTUAABAAAAMpCI4gAAAAAoAAAAAAAAACgAAAAGAbEdAAAADw=='
@@ -218,24 +208,31 @@ def gather_ntlm_info(url):
                         response_data[url]['data'] = server_details
                         # Let's save some bytes
                         del (response_data[url]['data']['UNKNOWN'])
+                        """
                         if 'ews' in url:
                             response_data[url]['data']['Server Type'] = 'Exchange Web Application'
                         elif 'iwa_test' in url:
                             response_data[url]['data']['Server Type'] = 'Okta IWA'
+                        """
                         return response_data
                     else:
+                        """
                         response_data[url]['meta']['status'] = 'fail'
                         response_data[url]['meta']['reason'] = 'NTLM decode failed'
                         return response_data
+                        """
+                        return False
 
             else:
+                return False
+                """
                 response_data[url]['meta']['has_authenticate_header'] = False
                 response_data[url]['meta']['status'] = 'fail'
                 response_data[url]['meta']['reason'] = 'WWW-Authenticate header not found. Headers - {}'.format(
                     str(auth_header))
                 return response_data
+                """
 
         else:
             print("[!] No NTLM authentication endpoint found at {}".format(url))
-            return "Nothing"
-
+            return False

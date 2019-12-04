@@ -1,4 +1,5 @@
 from iptools import IpRangeList
+from ntlmrecon.misc import wordlist
 import sys
 import re
 import random
@@ -8,6 +9,7 @@ CIDR_REGEX = "^([0-9]{1,3}\.){3}[0-9]{1,3}(\/([0-9]|[1-2][0-9]|3[0-2]))?$"
 URL_REGEX = "^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$"
 HOST_REGEX = "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*" \
              "([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$"
+
 
 
 def _cidr_to_iplist(cidr):
@@ -75,6 +77,7 @@ def read_input_and_gen_list(inputstr, shuffle=False):
         return master_records
     else:
         return master_records
+
 
 
 
