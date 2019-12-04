@@ -1,6 +1,6 @@
 # NTLMRecon
 
-A fast NTLM reconnaissance tool without external dependencies written. Written for red teams <3
+A fast NTLM reconnaissance tool without external dependencies. Written for red teams <3
 
 > Work in Progess. Things may break and change at anytime
 
