@@ -1,4 +1,5 @@
 # NTLMRecon
+
 A fast NTLM reconnaissance tool without external dependencies written. Written for red teams <3
 
 > Work in Progess. Thinks may break and change at anytime
@@ -6,6 +7,18 @@ A fast NTLM reconnaissance tool without external dependencies written. Written f
 NTLMRecon is built with flexibilty in mind. Need to run recon on a single URL, an IP address, an entire CIDR range or combination of all of it all put in a single input file?
 
 No problem! NTLMRecon got you covered. Read on.
+
+# Overview
+
+NTLMRecon looks for NTLM enabled web endpoints, sends a fake authentication request and enumerates the following information from the NTLMSSP response:
+
+1. AD Domain Name 
+2. Server name
+3. DNS Domain Name
+4. FQDN
+5. Parent DNS Domain
+
+Since ntlmrecon leverages a python implementation of NTLMSSP, it eliminates the overhead of running Nmap NSE `http-ntlm-info` for every successful discovery.
 
 
 # Getting Started
