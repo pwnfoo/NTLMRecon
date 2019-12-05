@@ -77,6 +77,6 @@ To run recon with an input file, just run :
 `$ ntlmrecon --infile /path/to/input/file --outfile ntlmrecon-fromfile.csv`
 
 
-### Feedback
+# Feedback
 
 If you'd like to see a feature added into the tool or something doesn't work for you, please open a new [issue](https://github.com/sachinkamath/ntlmrecon/issues/new)
