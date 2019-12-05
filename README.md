@@ -21,7 +21,7 @@ Since ntlmrecon leverages a python implementation of NTLMSSP, it eliminates the 
 
 # Getting Started
 
-1. Clone the repository - `git clone https://github.com/sachinkamath/pandora/`
+1. Clone the repository - `git clone https://github.com/sachinkamath/ntlmrecon/`
 2. RECOMMENDED - Install virtualenv `pip install virtualenv`
 3. Start a new virtual environment - `virtualenv venv` and activate it with `source venv/bin/activate`
 4. Run the setup file - `python setup.py install`
