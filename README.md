@@ -37,13 +37,13 @@ usage: ntlmrecon [-h] [--input INPUT | --infile INFILE] [--threads THREADS] [--o
 Arguments:
   -h, --help           show this help message and exit
   --input INPUT        Pass input as an IP address, URL or CIDR to enumerate NTLM endpoints
-  --infile INFILE      Pass input from a local file
+  --infile INFILE       Pass input from a local file
   --threads THREADS    Set number of threads (Default: 10)
   --output-type, -o    Set output type. JSON (TODO) and CSV supported (Default: CSV)
-  --outfile OUTFILE    Set output file name (Default: ntlmrecon.csv)
+  --outfile OUTFILE     Set output file name (Default: ntlmrecon.csv)
   --random-user-agent  TODO: Randomize user agents when sending requests (Default: False)
   --force-all          TODO: Force enumerate all endpoints even if a valid endpoint is found for a URL (Default : False)
-  --shuffle            Break order of the input files
+  --shuffle              Break order of the input files (TODO: Improve logic)
 </pre>
 
 
@@ -75,7 +75,6 @@ https://mail.contoso.com
 To run recon with an input file, just run :
 
 `$ ntlmrecon --infile /path/to/input/file --outfile ntlmrecon-fromfile.csv`
-
 
 # Feedback
 
