@@ -6,6 +6,8 @@ A fast NTLM reconnaissance tool without external dependencies. Useful to find ou
 
 NTLMRecon is built with flexibilty in mind. Need to run recon on a single URL, an IP address, an entire CIDR range or combination of all of it all put in a single input file? No problem! NTLMRecon got you covered. Read on.
 
+Internal wordlists are from the awesome [nyxgeek/lyncsmash](https://github.com/nyxgeek/lyncsmash) repo
+
 # Overview
 
 NTLMRecon looks for NTLM enabled web endpoints, sends a fake authentication request and enumerates the following information from the NTLMSSP response:
