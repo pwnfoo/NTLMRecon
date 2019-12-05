@@ -28,7 +28,7 @@ Since ntlmrecon leverages a python implementation of NTLMSSP, it eliminates the 
 5. Run ntlmrecon - `ntlmrecon --help`
 
 
-# Sneak peek
+# Usage
 
 <pre>
 
@@ -47,7 +47,7 @@ Arguments:
 </pre>
 
 
-# Example Usage
+## Example Usage
 
 ### Recon on a single URL
 
