@@ -34,18 +34,30 @@ Since ntlmrecon leverages a python implementation of NTLMSSP, it eliminates the 
 
 <pre>
 
-usage: ntlmrecon [-h] [--input INPUT | --infile INFILE] [--threads THREADS] [--output-type] --outfile OUTFILE [--random-user-agent] [--force-all] [--shuffle]
 
-Arguments:
+         _   _ _____ _     ___  _________
+        | \ | |_   _| |    |  \/  || ___ \
+        |  \| | | | | |    | .  . || |_/ /___  ___ ___  _ __
+        | . ` | | | | |    | |\/| ||    // _ \/ __/ _ \| '_ \
+        | |\  | | | | |____| |  | || |\ \  __/ (_| (_) | | | |
+        \_| \_/ \_/ \_____/\_|  |_/\_| \_\___|\___\___/|_| |_|
+
+             v.0.1 beta - Y'all still exposing NTLM endpoints?
+
+usage: ntlmrecon [-h] [--input INPUT | --infile INFILE] [--wordlist WORDLIST] [--threads THREADS] [--output-type] --outfile OUTFILE [--random-user-agent] [--force-all] [--shuffle]
+
+optional arguments:
   -h, --help           show this help message and exit
   --input INPUT        Pass input as an IP address, URL or CIDR to enumerate NTLM endpoints
-  --infile INFILE       Pass input from a local file
+  --infile INFILE      Pass input from a local file
+  --wordlist WORDLIST  Override the internal wordlist with a custom wordlist
   --threads THREADS    Set number of threads (Default: 10)
-  --output-type, -o    Set output type. JSON (TODO) and CSV supported (Default: CSV)
-  --outfile OUTFILE     Set output file name (Default: ntlmrecon.csv)
-  --random-user-agent  TODO: Randomize user agents when sending requests (Default: False)
-  --force-all          TODO: Force enumerate all endpoints even if a valid endpoint is found for a URL (Default : False)
-  --shuffle              Break order of the input files (TODO: Improve logic)
+  --output-type, -o    Set output type. JSON and CSV supported (Default: CSV) (TODO: JSON)
+  --outfile OUTFILE    Set output file name (Default: ntlmrecon.csv)
+  --random-user-agent  TODO: Randomize user agents when sending requests (Default: False) (TODO)
+  --force-all          Force enumerate all endpoints even if a valid endpoint is found for a URL (Default : False)
+  --shuffle            Break order of the input files (TODO: Improve logic)
+
 </pre>
 
 
