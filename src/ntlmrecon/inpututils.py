@@ -11,7 +11,6 @@ HOST_REGEX = "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*" \
              "([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$"
 
 
-
 def _cidr_to_iplist(cidr):
     try:
         ip_range = IpRangeList(cidr)

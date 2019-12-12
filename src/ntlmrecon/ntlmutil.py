@@ -10,17 +10,21 @@ import string
 import collections
 from random import choice
 import json
+from termcolor import colored
+from colorama import init
 
+init()
 
 
 # We are hackers. SSL warnings don't stop us, although this is not recommended.
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-
-# Decoder taken from https://gist.github.com/aseering/829a2270b72345a1dc42 , ported and modified
+# Decoder taken from https://gist.github.com/aseering/829a2270b72345a1dc42, Python3 ported and modified
 VALID_CHRS = set(string.ascii_letters + string.digits + string.punctuation)
 
 FOUND_DOMAINS = ['google.com']
+
+FAIL_DOMAINS = []
 
 def clean_str(st):
     return ''.join((s if s in VALID_CHRS else '?') for s in st)
@@ -146,23 +150,44 @@ def is_valid_url(url):
         return False
 
 
+def url_is_reachable(url):
+    try:
+        response = requests.head(url, verify=False)
+    except (ConnectionError, OSError):
+        print("[!] No web server present at {}".format(url))
+        return False
+    else:
+        return url
 # Verifies if the endpoint has authentication enabled and looks for NTLM specifically
+
+
 def detect_ntlm_auth(url):
+    global FAIL_DOMAINS
+
     if not is_valid_url(url):
         return False
     else:
         try:
-            response = requests.head(url, verify=False, timeout=4)
+            if urlparse(url).netloc in FAIL_DOMAINS:
+                return False
+            else:
+                response = requests.head(url, verify=False, timeout=3)
+        except (OSError, ConnectionError) as e:
+            if urlparse(url).netloc not in FAIL_DOMAINS:
+                FAIL_DOMAINS.append(urlparse(url).netloc)
+
+            return False
+
         except Exception as e:
             print('[!] Error processing {} - '.format(url), e.__class__.__name__)
-            return "FAIL " + str(e.__class__.__name__)
+            return False
 
         else:
             if response.status_code == 401:
                 response_headers = dict(response.headers)
                 if 'WWW-Authenticate' in response_headers.keys():
                     if 'NTLM' in response_headers['WWW-Authenticate']:
-                        print("[+] {} has NTLM authentication enabled".format(url))
+                        print(colored("[+] {} has NTLM authentication enabled!".format(url), 'green'))
                         return True
                     else:
                         print("[+] {} requires authentication but the method was found to be {}".format(
@@ -182,6 +207,7 @@ def gather_ntlm_info(url):
         response_data[url]['meta'] = dict()
 
         ntlm_check_response = detect_ntlm_auth(url)
+
         if ntlm_check_response:
             if type(ntlm_check_response) is not bool:
                 if 'FAIL ' in ntlm_check_response:
@@ -224,7 +250,6 @@ def gather_ntlm_info(url):
                         return False
 
             else:
-                return False
                 """
                 response_data[url]['meta']['has_authenticate_header'] = False
                 response_data[url]['meta']['status'] = 'fail'
@@ -232,7 +257,7 @@ def gather_ntlm_info(url):
                     str(auth_header))
                 return response_data
                 """
+                return False
 
         else:
-            print("[!] No NTLM authentication endpoint found at {}".format(url))
             return False

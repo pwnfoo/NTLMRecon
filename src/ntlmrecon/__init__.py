@@ -7,7 +7,7 @@ import os
 
 from colorama import init as init_colorama
 from multiprocessing.dummy import Pool as ThreadPool
-from ntlmrecon.ntlmutil import gather_ntlm_info
+from ntlmrecon.ntlmutil import gather_ntlm_info, url_is_reachable
 from ntlmrecon.misc import print_banner, wordlist
 from ntlmrecon.inpututils import readfile_and_gen_input, read_input_and_gen_list
 from termcolor import colored
@@ -53,7 +53,6 @@ def write_records_to_csv(records, filename):
 
 
 def main():
-
     # Init arg parser
     parser = argparse.ArgumentParser(description=print_banner())
     group = parser.add_mutually_exclusive_group()
@@ -79,24 +78,23 @@ def main():
         print(colored("[!] File already exists. Please choose a different file name", "red"))
         sys.exit()
 
-    pool = ThreadPool(args.threads)
+    pool = ThreadPool(int(args.threads))
 
     if args.input:
-        if args.shuffle:
-            records = read_input_and_gen_list(args.input, shuffle=True)
-        else:
-            records = read_input_and_gen_list(args.input, shuffle=False)
+        records = read_input_and_gen_list(args.input, shuffle=args.shuffle)
     elif args.infile:
-        if args.shuffle:
-            records = readfile_and_gen_input(args.infile, shuffle=True)
-        else:
-            records = readfile_and_gen_input(args.infile, shuffle=False)
+        records = readfile_and_gen_input(args.infile, shuffle=args.shuffle)
+    else:
+        sys.exit(1)
 
+    # Identify all URLs with web servers running
+    print(colored('[+] Identifying all endpoints with web servers..', 'green'))
     for record in records:
+        print(colored("[+] Brute-forcing {} endpoints on {}".format(len(wordlist), record), "yellow"))
         all_combos = []
         for word in wordlist:
             # TODO : Dirty now, do sanity checks
-            all_combos.append(record+word)
+            all_combos.append(str(record+word))
         results = pool.map(gather_ntlm_info, all_combos)
         results = [x for x in results if x]
         write_records_to_csv(results, args.outfile)
