@@ -8,7 +8,7 @@ import os
 from colorama import init as init_colorama
 from multiprocessing.dummy import Pool as ThreadPool
 from ntlmrecon.ntlmutil import gather_ntlm_info, url_is_reachable
-from ntlmrecon.misc import print_banner, wordlist
+from ntlmrecon.misc import print_banner, INTERNAL_WORDLIST
 from ntlmrecon.inpututils import readfile_and_gen_input, read_input_and_gen_list
 from termcolor import colored
 from urllib.parse import urlsplit, urlunsplit
@@ -58,8 +58,7 @@ def main():
     group = parser.add_mutually_exclusive_group()
     group.add_argument('--input', help='Pass input as an IP address, URL or CIDR to enumerate NTLM endpoints')
     group.add_argument('--infile', help='Pass input from a local file')
-    # TODO
-    # parser.add_argument('--wordlist', help='Override the internal wordlist with a custom wordlist', required=False)
+    parser.add_argument('--wordlist', help='Override the internal wordlist with a custom wordlist', required=False)
     parser.add_argument('--threads', help="Set number of threads (Default: 10)", required=False, default=10)
     parser.add_argument('--output-type', '-o', help='Set output type. JSON (TODO) and CSV supported (Default: CSV)',
                         required=False, default='csv', action="store_true")
@@ -75,7 +74,8 @@ def main():
         print(colored("[!] Invalid filename. Please enter a valid filename!", "red"))
         sys.exit()
     elif os.path.exists(args.outfile):
-        print(colored("[!] File already exists. Please choose a different file name", "red"))
+        print(colored("[!] Output file {} already exists. "
+                      "Please choose a different file name".format(args.outfile), "red"))
         sys.exit()
 
     pool = ThreadPool(int(args.threads))
@@ -87,14 +87,29 @@ def main():
     else:
         sys.exit(1)
 
+    # Check if a custom wordlist is specified
+    if args.wordlist:
+        try:
+            with open(args.wordlist, 'r') as fr:
+                wordlist = fr.read().split('\n')
+                wordlist = [x for x in wordlist if x]
+        except (OSError, FileNotFoundError):
+            print(colored("[!] Cannot read the specified file {}. Check if file exists and you have "
+                          "permission to read it".format(args.wordlist), "red"))
+            sys.exit(1)
+    else:
+        wordlist = INTERNAL_WORDLIST
     # Identify all URLs with web servers running
-    print(colored('[+] Identifying all endpoints with web servers..', 'green'))
     for record in records:
-        print(colored("[+] Brute-forcing {} endpoints on {}".format(len(wordlist), record), "yellow"))
         all_combos = []
+
+        print(colored("[+] Brute-forcing {} endpoints on {}".format(len(wordlist), record), "yellow"))
         for word in wordlist:
-            # TODO : Dirty now, do sanity checks
-            all_combos.append(str(record+word))
+            if word.startswith('/'):
+                all_combos.append(str(record+word))
+            else:
+                all_combos.append(str(record+"/"+word))
+
         results = pool.map(gather_ntlm_info, all_combos)
         results = [x for x in results if x]
         write_records_to_csv(results, args.outfile)

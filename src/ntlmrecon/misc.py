@@ -13,12 +13,10 @@ def print_banner():
              """ + colored("""v.0.1 beta - Y'all still exposing NTLM endpoints?
 """, 'green'), 'red'))
 
-wordlist = [
+INTERNAL_WORDLIST = [
     "/abs",
-    "/Abs/",
     "/aspnet_client/",
     "/Autodiscover",
-    "/Autodiscover/",
     "/Autodiscover/AutodiscoverService.svc/root",
     "/Autodiscover/Autodiscover.xml",
     "/AutoUpdate/",
@@ -26,23 +24,18 @@ wordlist = [
     "/CertProv",
     "/CertSrv/",
     "/Conf/",
-    "/DeviceUpdateFiles_Ext/",
-    "/DeviceUpdateFiles_Int/",
     "/dialin",
     "/ecp/",
     "/Etc/",
     "/EWS/",
     "/Exchange/",
     "/Exchweb/",
-    "/GroupExpansion",
     "/GroupExpansion/",
     "/HybridConfig",
     "/iwa/authenticated.aspx",
     "/iwa/iwa_test.aspx",
     "/mcx",
-    "/Mcx/McxService.svc/mex",
     "/meet",
-    "/meeting",
     "/Microsoft-Server-ActiveSync/",
     "/OAB/",
     "/ocsp/",

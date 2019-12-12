@@ -1,5 +1,4 @@
 from iptools import IpRangeList
-from ntlmrecon.misc import wordlist
 import sys
 import re
 import random
