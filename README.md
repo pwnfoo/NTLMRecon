@@ -21,7 +21,13 @@ NTLMRecon looks for NTLM enabled web endpoints, sends a fake authentication requ
 Since ntlmrecon leverages a python implementation of NTLMSSP, it eliminates the overhead of running Nmap NSE `http-ntlm-info` for every successful discovery.
 
 
-# Getting Started
+# Installation
+
+## Arch 
+
+If you're on Arch Linux or any Arch linux based distribution, you can grab the latest build from [AUR](https://aur.archlinux.org/packages/ntlmrecon/)
+
+## Generic Installation
 
 1. Clone the repository - `git clone https://github.com/sachinkamath/ntlmrecon/`
 2. RECOMMENDED - Install virtualenv `pip install virtualenv`
