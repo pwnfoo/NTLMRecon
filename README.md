@@ -15,6 +15,7 @@ Internal wordlists are from the awesome [nyxgeek/lyncsmash](https://github.com/n
 
 [![asciicast](https://asciinema.org/a/e4ggPBbzpJj9cIWRwK67D8xnw.svg)](https://asciinema.org/a/e4ggPBbzpJj9cIWRwK67D8xnw)
 
+
 # Overview
 
 NTLMRecon looks for NTLM enabled web endpoints, sends a fake authentication request and enumerates the following information from the NTLMSSP response:
@@ -25,8 +26,14 @@ NTLMRecon looks for NTLM enabled web endpoints, sends a fake authentication requ
 4. FQDN
 5. Parent DNS Domain
 
-Since ntlmrecon leverages a python implementation of NTLMSSP, it eliminates the overhead of running Nmap NSE `http-ntlm-info` for every successful discovery.
+Since NTLMRecon leverages a python implementation of NTLMSSP, it eliminates the overhead of running Nmap NSE `http-ntlm-info` for every successful discovery.
 
+On every successful discovery of a NTLM enabled web endpoint, the tool enumerates and saves information about the domain as follows to a CSV file :
+
+
+| URL                      	| Domain Name 	| Server Name 	| DNS Domain Name   	| FQDN                         	| DNS Domain  	|
+|--------------------------	|-------------	|-------------	|-------------------	|------------------------------	|-------------	|
+| https://contoso.com/EWS/ 	| XCORP       	| EXCHANGE01  	| xcorp.contoso.net 	| EXCHANGE01.xcorp.contoso.net 	| contoso.net 	|
 
 # Installation
 
