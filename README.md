@@ -4,8 +4,6 @@
  
 # NTLMRecon
 
-> Note that the tool is still under development. Things may break anytime - hence, beta!
-
 A fast and flexible NTLM reconnaissance tool without external dependencies. Useful to find out information about NTLM endpoints when working with a large set of potential IP addresses and domains.
 
 
