@@ -9,7 +9,7 @@ A fast and flexible NTLM reconnaissance tool without external dependencies. Usef
 
 NTLMRecon is built with flexibilty in mind. Need to run recon on a single URL, an IP address, an entire CIDR range or combination of all of it all put in a single input file? No problem! NTLMRecon got you covered. Read on.
 
-Internal wordlists are from the awesome [nyxgeek/lyncsmash](https://github.com/nyxgeek/lyncsmash) repo
+Internal wordlists are from the awesome [nyxgeek/lyncsmash](https://github.com/nyxgeek/lyncsmash) repository.
 
 # Demo
 
@@ -26,9 +26,7 @@ NTLMRecon looks for NTLM enabled web endpoints, sends a fake authentication requ
 4. FQDN
 5. Parent DNS Domain
 
-Since NTLMRecon leverages a python implementation of NTLMSSP, it eliminates the overhead of running Nmap NSE `http-ntlm-info` for every successful discovery.
-
-On every successful discovery of a NTLM enabled web endpoint, the tool enumerates and saves information about the domain as follows to a CSV file :
+Since NTLMRecon leverages a python implementation of NTLMSSP, it eliminates the overhead of running Nmap NSE `http-ntlm-info` for every successful discovery. On every successful discovery of a NTLM enabled web endpoint, the tool enumerates and saves information about the domain as follows to a CSV file :
 
 
 | URL                      	| Domain Name 	| Server Name 	| DNS Domain Name   	| FQDN                         	| DNS Domain  	|
@@ -37,11 +35,11 @@ On every successful discovery of a NTLM enabled web endpoint, the tool enumerate
 
 # Installation
 
-## Arch 
+### Arch 
 
 If you're on Arch Linux or any Arch linux based distribution, you can grab the latest build from [AUR](https://aur.archlinux.org/packages/ntlmrecon/)
 
-## Generic Installation
+### Generic Installation
 
 1. Clone the repository - `git clone https://github.com/sachinkamath/ntlmrecon/`
 2. RECOMMENDED - Install virtualenv `pip install virtualenv`
