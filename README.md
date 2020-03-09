@@ -1,6 +1,6 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/sachinkamath/ntlmrecon/graphs/commit-activity)
-  
+
  
 # NTLMRecon
 
@@ -10,6 +10,10 @@ A fast and flexible NTLM reconnaissance tool without external dependencies. Usef
 NTLMRecon is built with flexibilty in mind. Need to run recon on a single URL, an IP address, an entire CIDR range or combination of all of it all put in a single input file? No problem! NTLMRecon got you covered. Read on.
 
 Internal wordlists are from the awesome [nyxgeek/lyncsmash](https://github.com/nyxgeek/lyncsmash) repo
+
+# Demo
+
+[![asciicast](https://asciinema.org/a/e4ggPBbzpJj9cIWRwK67D8xnw.svg)](https://asciinema.org/a/e4ggPBbzpJj9cIWRwK67D8xnw)
 
 # Overview
 
@@ -43,29 +47,36 @@ If you're on Arch Linux or any Arch linux based distribution, you can grab the l
 
 <pre>
 
-
-         _   _ _____ _     ___  _________
-        | \ | |_   _| |    |  \/  || ___ \
-        |  \| | | | | |    | .  . || |_/ /___  ___ ___  _ __
-        | . ` | | | | |    | |\/| ||    // _ \/ __/ _ \| '_ \
+         _   _ _____ _     ___  _________                     
+        | \ | |_   _| |    |  \/  || ___ \                    
+        |  \| | | | | |    | .  . || |_/ /___  ___ ___  _ __  
+        | . ` | | | | |    | |\/| ||    // _ \/ __/ _ \| '_ \ 
         | |\  | | | | |____| |  | || |\ \  __/ (_| (_) | | | |
         \_| \_/ \_/ \_____/\_|  |_/\_| \_\___|\___\___/|_| |_|
 
-             v.0.1 beta - Y'all still exposing NTLM endpoints?
+             v.0.2 beta - Y'all still exposing NTLM endpoints?
 
-usage: ntlmrecon [-h] [--input INPUT | --infile INFILE] [--wordlist WORDLIST] [--threads THREADS] [--output-type] --outfile OUTFILE [--random-user-agent] [--force-all] [--shuffle]
+usage: ntlmrecon [-h] [--input INPUT | --infile INFILE] [--wordlist WORDLIST]
+                 [--threads THREADS] [--output-type] --outfile OUTFILE
+                 [--random-user-agent] [--force-all] [--shuffle] [-f]
 
 optional arguments:
   -h, --help           show this help message and exit
-  --input INPUT        Pass input as an IP address, URL or CIDR to enumerate NTLM endpoints
+  --input INPUT        Pass input as an IP address, URL or CIDR to enumerate
+                       NTLM endpoints
   --infile INFILE      Pass input from a local file
   --wordlist WORDLIST  Override the internal wordlist with a custom wordlist
   --threads THREADS    Set number of threads (Default: 10)
-  --output-type, -o    Set output type. JSON and CSV supported (Default: CSV) (TODO: JSON)
+  --output-type, -o    Set output type. JSON (TODO) and CSV supported
+                       (Default: CSV)
   --outfile OUTFILE    Set output file name (Default: ntlmrecon.csv)
-  --random-user-agent  TODO: Randomize user agents when sending requests (Default: False) (TODO)
-  --force-all          Force enumerate all endpoints even if a valid endpoint is found for a URL (Default : False)
-  --shuffle            Break order of the input files (TODO: Improve logic)
+  --random-user-agent  TODO: Randomize user agents when sending requests
+                       (Default: False)
+  --force-all          Force enumerate all endpoints even if a valid endpoint
+                       is found for a URL (Default : False)
+  --shuffle            Break order of the input files
+  -f, --force          Force replace files
+
 
 </pre>
 
