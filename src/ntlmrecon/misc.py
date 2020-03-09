@@ -10,7 +10,7 @@ def print_banner():
         | |\  | | | | |____| |  | || |\ \  __/ (_| (_) | | | |
         \_| \_/ \_/ \_____/\_|  |_/\_| \_\___|\___\___/|_| |_|
 
-             """ + colored("""v.0.1 beta - Y'all still exposing NTLM endpoints?
+             """ + colored("""v.0.2 beta - Y'all still exposing NTLM endpoints?
 """, 'green'), 'red'))
 
 INTERNAL_WORDLIST = [

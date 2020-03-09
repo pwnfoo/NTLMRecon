@@ -10,7 +10,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 setup(
     name='ntlmrecon',  # Required
 
-    version='0.1',  # Required
+    version='0.2beta',  # Required
 
     description='A fast NTLM recon tool to obtain server information on hosts',  # Optional
 
