@@ -43,7 +43,7 @@ NTLMRecon is already packaged for BlackArch and can be installed by running `pac
 
 ### Arch 
 
-If you're on Arch Linux or any Arch linux based distribution, you can grab the latest build from the [Arch User Repository](https://aur.archlinux.org/packages/ntlmrecon/)
+If you're on Arch Linux or any Arch linux based distribution, you can grab the latest build from the [Arch User Repository](https://aur.archlinux.org/packages/ntlmrecon/).
 
 
 ### Generic Installation
@@ -105,8 +105,7 @@ optional arguments:
 
 ### Recon on an input file
 
-NTLM recon automatically detects the type of input per line and gives you results automatically.
-CIDR ranges are expanded automatically even when read from a text file.
+The tool automatically detects the type of input per line and gives you results automatically. CIDR ranges are expanded automatically even when read from a text file.
 
 Input file can be something as mixed up as :
 
@@ -118,6 +117,7 @@ CONTOSOHOSTNAME
 https://mail.contoso.com
 </pre>
 
+
 To run recon with an input file, just run :
 
 `$ ntlmrecon --infile /path/to/input/file --outfile ntlmrecon-fromfile.csv`
@@ -128,4 +128,4 @@ To run recon with an input file, just run :
 
 # Feedback
 
-If you'd like to see a feature added into the tool or something doesn't work for you, please open a new [issue](https://github.com/sachinkamath/ntlmrecon/issues/new)
+If you'd like to see a feature added into the tool or something doesn't work for you, please open a new [issue](https://github.com/sachinkamath/ntlmrecon/issues/new).
