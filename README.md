@@ -36,17 +36,23 @@ On every successful discovery of a NTLM enabled web endpoint, the tool enumerate
 
 # Installation
 
+
+### BlackArch
+
+NTLMRecon is already packaged for BlackArch and can be installed by running `pacman -S ntlmrecon`
+
 ### Arch 
 
-If you're on Arch Linux or any Arch linux based distribution, you can grab the latest build from [AUR](https://aur.archlinux.org/packages/ntlmrecon/)
+If you're on Arch Linux or any Arch linux based distribution, you can grab the latest build from the [Arch User Repository](https://aur.archlinux.org/packages/ntlmrecon/)
+
 
 ### Generic Installation
 
-1. Clone the repository - `git clone https://github.com/sachinkamath/ntlmrecon/`
-2. RECOMMENDED - Install virtualenv `pip install virtualenv`
-3. Start a new virtual environment - `virtualenv venv` and activate it with `source venv/bin/activate`
-4. Run the setup file - `python setup.py install`
-5. Run ntlmrecon - `ntlmrecon --help`
+1. Clone the repository             : `git clone https://github.com/sachinkamath/ntlmrecon/`
+2. RECOMMENDED - Install virtualenv : `pip install virtualenv`
+3. Start a new virtual environment  : `virtualenv venv` and activate it with `source venv/bin/activate`
+4. Run the setup file               : `python setup.py install`
+5. Run ntlmrecon                    : `ntlmrecon --help`
 
 
 # Usage
@@ -118,7 +124,7 @@ To run recon with an input file, just run :
 
 # Acknowledgements
 
-* Internal wordlists are from the awesome [nyxgeek/lyncsmash](https://github.com/nyxgeek/lyncsmash) repository.
+* [@nyxgeek](https://github.com/nyxgeek) for the awesome wordlist in [lyncsmash](https://github.com/nyxgeek/lyncsmash) repository.
 
 # Feedback
 
