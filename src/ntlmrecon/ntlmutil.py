@@ -235,7 +235,10 @@ def gather_ntlm_info(url):
                         response_data[url]['meta']['status'] = 'ok'
                         response_data[url]['data'] = server_details
                         # Let's save some bytes
-                        del (response_data[url]['data']['UNKNOWN'])
+                        try:
+                            del (response_data[url]['data']['UNKNOWN'])
+                        except KeyError:
+                            pass
                         """
                         if 'ews' in url:
                             response_data[url]['data']['Server Type'] = 'Exchange Web Application'
