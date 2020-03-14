@@ -45,8 +45,11 @@ NTLMRecon is already packaged for BlackArch and can be installed by running `pac
 
 If you're on Arch Linux or any Arch linux based distribution, you can grab the latest build from the [Arch User Repository](https://aur.archlinux.org/packages/ntlmrecon/).
 
+### PyPI
 
-### Generic Installation
+You can simply run `pip install ntlmrecon` to fetch the latest build from [PyPI](https://pypi.org/project/ntlmrecon/)
+
+### Build from source
 
 1. Clone the repository             : `git clone https://github.com/sachinkamath/ntlmrecon/`
 2. RECOMMENDED - Install virtualenv : `pip install virtualenv`
