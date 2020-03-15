@@ -10,9 +10,9 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 setup(
     name='ntlmrecon',  # Required
 
-    version='0.2beta',  # Required
+    version='0.2.1-beta',  # Required
 
-    description='A fast NTLM recon tool to obtain server information on hosts',  # Optional
+    description='A tool to enumerate information from NTLM authentication enabled web endpoints',  # Optional
 
     long_description=long_description,  # Optional
 
@@ -22,7 +22,7 @@ setup(
 
     # This should be your name or the name of the organization which owns the
     # project.
-    author='The Python Packaging Authority',  # Optional
+    author='Sachin S Kamath (@sachinkamath)',  # Optional
 
     # This should be a valid email address corresponding to the author listed
     # above.

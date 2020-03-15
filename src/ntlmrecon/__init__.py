@@ -62,13 +62,13 @@ def main():
     parser.add_argument('--threads', help="Set number of threads (Default: 10)", required=False, default=10)
     parser.add_argument('--output-type', '-o', help='Set output type. JSON (TODO) and CSV supported (Default: CSV)',
                         required=False, default='csv', action="store_true")
-    parser.add_argument('--outfile', help='Set output file name (Default: ntlmrecon.csv)', required=True)
+    parser.add_argument('--outfile', help='Set output file name (Default: ntlmrecon.csv)', default='ntlmrecon.csv')
     parser.add_argument('--random-user-agent', help="TODO: Randomize user agents when sending requests (Default: False)",
                         default=False, action="store_true")
     parser.add_argument('--force-all', help="Force enumerate all endpoints even if a valid endpoint is found for a URL "
                                             "(Default : False)", default=False, action="store_true")
     parser.add_argument('--shuffle', help="Break order of the input files", default=False, action="store_true")
-    parser.add_argument('-f','--force', help="Force replace files", action="store_true", default=False)
+    parser.add_argument('-f', '--force', help="Force replace files", action="store_true", default=False)
     args = parser.parse_args()
 
     if os.path.isdir(args.outfile):
@@ -113,6 +113,7 @@ def main():
 
         results = pool.map(gather_ntlm_info, all_combos)
         results = [x for x in results if x]
+
         write_records_to_csv(results, args.outfile)
 
     print(colored('[+] All done! Output saved to {}. Happy hacking!'.format(args.outfile), 'green'))
