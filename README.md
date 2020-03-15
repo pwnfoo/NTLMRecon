@@ -127,7 +127,7 @@ To run recon with an input file, just run :
 
 # Acknowledgements
 
-* [@nyxgeek](https://github.com/nyxgeek) for the awesome wordlist in [lyncsmash](https://github.com/nyxgeek/lyncsmash) repository.
+* [@nyxgeek](https://github.com/nyxgeek) for the awesome wordlist in [lyncsmash](https://github.com/nyxgeek/lyncsmash) repository and for the idea behind [ntlmscan](https://github.com/nyxgeek/ntlmscan).
 
 # Feedback
 
