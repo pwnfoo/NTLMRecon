@@ -68,7 +68,7 @@ def main():
     parser.add_argument('--force-all', help="Force enumerate all endpoints even if a valid endpoint is found for a URL "
                                             "(Default : False)", default=False, action="store_true")
     parser.add_argument('--shuffle', help="Break order of the input files", default=False, action="store_true")
-    parser.add_argument('-f', '--force', help="Force replace files", action="store_true", default=False)
+    parser.add_argument('-f', '--force', help="Force replace output file if it already exists", action="store_true", default=False)
     args = parser.parse_args()
 
     if os.path.isdir(args.outfile):
@@ -76,7 +76,7 @@ def main():
         sys.exit()
     elif os.path.exists(args.outfile) and not args.force:
         print(colored("[!] Output file {} already exists. "
-                      "Please choose a different file name".format(args.outfile), "red"))
+                      "Choose a different file name or use -f to overwrite file!".format(args.outfile), "red"))
         sys.exit()
 
     pool = ThreadPool(int(args.threads))
