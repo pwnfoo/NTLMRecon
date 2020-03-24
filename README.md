@@ -62,6 +62,8 @@ You can simply run `pip install ntlmrecon` to fetch the latest build from [PyPI]
 
 <pre>
 
+ $ ntlmrecon --help                                                                                                                                                                                                                                 
+
          _   _ _____ _     ___  _________                     
         | \ | |_   _| |    |  \/  || ___ \                    
         |  \| | | | | |    | .  . || |_/ /___  ___ ___  _ __  
@@ -71,26 +73,21 @@ You can simply run `pip install ntlmrecon` to fetch the latest build from [PyPI]
 
              v.0.2 beta - Y'all still exposing NTLM endpoints?
 
-usage: ntlmrecon [-h] [--input INPUT | --infile INFILE] [--wordlist WORDLIST]
-                 [--threads THREADS] [--output-type] --outfile OUTFILE
-                 [--random-user-agent] [--force-all] [--shuffle] [-f]
+
+usage: ntlmrecon [-h] [--input INPUT | --infile INFILE] [--wordlist WORDLIST] [--threads THREADS] [--output-type] [--outfile OUTFILE] [--random-user-agent] [--force-all] [--shuffle] [-f]
 
 optional arguments:
   -h, --help           show this help message and exit
-  --input INPUT        Pass input as an IP address, URL or CIDR to enumerate
-                       NTLM endpoints
+  --input INPUT        Pass input as an IP address, URL or CIDR to enumerate NTLM endpoints
   --infile INFILE      Pass input from a local file
   --wordlist WORDLIST  Override the internal wordlist with a custom wordlist
   --threads THREADS    Set number of threads (Default: 10)
-  --output-type, -o    Set output type. JSON (TODO) and CSV supported
-                       (Default: CSV)
+  --output-type, -o    Set output type. JSON (TODO) and CSV supported (Default: CSV)
   --outfile OUTFILE    Set output file name (Default: ntlmrecon.csv)
-  --random-user-agent  TODO: Randomize user agents when sending requests
-                       (Default: False)
-  --force-all          Force enumerate all endpoints even if a valid endpoint
-                       is found for a URL (Default : False)
+  --random-user-agent  TODO: Randomize user agents when sending requests (Default: False)
+  --force-all          Force enumerate all endpoints even if a valid endpoint is found for a URL (Default : False)
   --shuffle            Break order of the input files
-  -f, --force          Force replace files
+  -f, --force          Force replace output file if it already exists
 
 
 </pre>
