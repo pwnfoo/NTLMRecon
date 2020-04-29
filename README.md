@@ -14,6 +14,13 @@ NTLMRecon is built with flexibilty in mind. Need to run recon on a single URL, a
 
 [![asciicast](https://asciinema.org/a/e4ggPBbzpJj9cIWRwK67D8xnw.svg)](https://asciinema.org/a/e4ggPBbzpJj9cIWRwK67D8xnw)
 
+# TODO
+
+1. Implement aiohttp based solution for sending requests
+2. Integrate a spraying library
+3. Add other authentication schemes found to the output
+4. Automatic detection of autodiscover domains if domain
+
 
 # Overview
 
