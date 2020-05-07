@@ -56,13 +56,13 @@ def main():
     # Init arg parser
     parser = argparse.ArgumentParser(description=print_banner())
     group = parser.add_mutually_exclusive_group()
-    group.add_argument('--input', help='Pass input as an IP address, URL or CIDR to enumerate NTLM endpoints')
-    group.add_argument('--infile', help='Pass input from a local file')
+    group.add_argument('--input', '-i',  help='Pass input as an IP address, URL or CIDR to enumerate NTLM endpoints')
+    group.add_argument('--infile', '-I', help='Pass input from a local file')
     parser.add_argument('--wordlist', help='Override the internal wordlist with a custom wordlist', required=False)
     parser.add_argument('--threads', help="Set number of threads (Default: 10)", required=False, default=10)
     parser.add_argument('--output-type', '-o', help='Set output type. JSON (TODO) and CSV supported (Default: CSV)',
                         required=False, default='csv', action="store_true")
-    parser.add_argument('--outfile', help='Set output file name (Default: ntlmrecon.csv)', default='ntlmrecon.csv')
+    parser.add_argument('--outfile', '-O', help='Set output file name (Default: ntlmrecon.csv)', default='ntlmrecon.csv')
     parser.add_argument('--random-user-agent', help="TODO: Randomize user agents when sending requests (Default: False)",
                         default=False, action="store_true")
     parser.add_argument('--force-all', help="Force enumerate all endpoints even if a valid endpoint is found for a URL "
