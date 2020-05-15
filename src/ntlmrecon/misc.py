@@ -10,15 +10,16 @@ def print_banner():
         | |\  | | | | |____| |  | || |\ \  __/ (_| (_) | | | |
         \_| \_/ \_/ \_____/\_|  |_/\_| \_\___|\___\___/|_| |_|
 
-             """ + colored("""v.0.2 beta - Y'all still exposing NTLM endpoints?
+             """ + colored("""v.0.4 beta - Y'all still exposing NTLM endpoints?
 """, 'green') + colored("""
  Bug Reports, Feature Requests : https://github.com/sachinkamath/NTLMRecon
 
-""", "yellow"), 'red'))
+""", "cyan"), 'red'))
 
 
 INTERNAL_WORDLIST = [
     "/abs",
+    "/adfs/services/trust/2005/windowstransport",
     "/aspnet_client/",
     "/Autodiscover",
     "/Autodiscover/AutodiscoverService.svc/root",
@@ -28,6 +29,8 @@ INTERNAL_WORDLIST = [
     "/CertProv",
     "/CertSrv/",
     "/Conf/",
+    "/deviceupdatefiles_ext/",
+    "/deviceupdatefiles_int/",
     "/dialin",
     "/ecp/",
     "/Etc/",

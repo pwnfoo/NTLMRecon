@@ -7,11 +7,11 @@ import os
 
 from colorama import init as init_colorama
 from multiprocessing.dummy import Pool as ThreadPool
-from ntlmrecon.ntlmutil import gather_ntlm_info, url_is_reachable
+from ntlmrecon.ntlmutil import gather_ntlm_info
 from ntlmrecon.misc import print_banner, INTERNAL_WORDLIST
 from ntlmrecon.inpututils import readfile_and_gen_input, read_input_and_gen_list
 from termcolor import colored
-from urllib.parse import urlsplit, urlunsplit
+from urllib.parse import urlsplit
 
 # Initialize colors in Windows - Because I like Windows too!
 init_colorama()
@@ -71,12 +71,15 @@ def main():
     parser.add_argument('-f', '--force', help="Force replace output file if it already exists", action="store_true", default=False)
     args = parser.parse_args()
 
+    if not args.input or not args.infile:
+        print(colored("[!] How about you check the -h flag?", "red"))
+
     if os.path.isdir(args.outfile):
         print(colored("[!] Invalid filename. Please enter a valid filename!", "red"))
         sys.exit()
     elif os.path.exists(args.outfile) and not args.force:
         print(colored("[!] Output file {} already exists. "
-                      "Choose a different file name or use -f to overwrite file!".format(args.outfile), "red"))
+                      "Choose a different file name or use -f to overwrite the file".format(args.outfile), "red"))
         sys.exit()
 
     pool = ThreadPool(int(args.threads))
@@ -113,10 +116,11 @@ def main():
 
         results = pool.map(gather_ntlm_info, all_combos)
         results = [x for x in results if x]
-
-        write_records_to_csv(results, args.outfile)
-
-    print(colored('[+] All done! Output saved to {}. Happy hacking!'.format(args.outfile), 'green'))
+        if results:
+            write_records_to_csv(results, args.outfile)
+            print(colored('[+] All done! Output saved to {}. Happy hacking!'.format(args.outfile), 'green'))
+        else:
+            print(colored("[!] Failed to find any NTLM endpoints :("))
 
 
 

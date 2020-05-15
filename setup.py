@@ -10,7 +10,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 setup(
     name='ntlmrecon',  # Required
 
-    version='0.2.1-beta',  # Required
+    version='0.4b0',  # Required
 
     description='A tool to enumerate information from NTLM authentication enabled web endpoints',  # Optional
 
