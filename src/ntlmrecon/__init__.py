@@ -71,7 +71,7 @@ def main():
     parser.add_argument('-f', '--force', help="Force replace output file if it already exists", action="store_true", default=False)
     args = parser.parse_args()
 
-    if not args.input or not args.infile:
+    if not args.input and not args.infile:
         print(colored("[!] How about you check the -h flag?", "red"))
 
     if os.path.isdir(args.outfile):
