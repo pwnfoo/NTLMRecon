@@ -116,11 +116,11 @@ def main():
 
         results = pool.map(gather_ntlm_info, all_combos)
         results = [x for x in results if x]
-        if results:
-            write_records_to_csv(results, args.outfile)
-            print(colored('[+] All done! Output saved to {}. Happy hacking!'.format(args.outfile), 'green'))
-        else:
-            print(colored("[!] Failed to find any NTLM endpoints :("))
+    if results:
+        write_records_to_csv(results, args.outfile)
+        print(colored('[+] All done! Output saved to {}. Happy hacking!'.format(args.outfile), 'green'))
+    else:
+        print(colored("[!] Failed to find any NTLM endpoints :("))
 
 
 
