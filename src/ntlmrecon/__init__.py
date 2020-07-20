@@ -107,8 +107,6 @@ def main():
     all_combos = []
     results = None
     for record in records:
-
-        print(colored("[+] Brute-forcing {} endpoints on {}".format(len(wordlist), record), "yellow"))
         for word in wordlist:
             if word.startswith('/'):
                 all_combos.append(str(record+word))
@@ -120,6 +118,8 @@ def main():
     if results:
         write_records_to_csv(results, args.outfile)
         print(colored('[+] Output saved to {}. Happy hacking!'.format(args.outfile), 'green'))
+    else:
+        print(colored('[!] No endpoints found :(', 'red'))
 
 
 
