@@ -115,11 +115,11 @@ def main():
             else:
                 all_combos.append(str(record+"/"+word))
 
-        results = pool.map(gather_ntlm_info, all_combos)
-        results = [x for x in results if x]
-        if results:
-            write_records_to_csv(results, args.outfile)
-            print(colored('[+] Info dor domain {} saved to {}. Happy hacking!'.format(record, args.outfile), 'green'))
+    results = pool.map(gather_ntlm_info, all_combos)
+    results = [x for x in results if x]
+    if results:
+        write_records_to_csv(results, args.outfile)
+        print(colored('[+] Info dor domain {} saved to {}. Happy hacking!'.format(record, args.outfile), 'green'))
 
 
 
