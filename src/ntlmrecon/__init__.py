@@ -104,8 +104,8 @@ def main():
     else:
         wordlist = INTERNAL_WORDLIST
     # Identify all URLs with web servers running
+    all_combos = []
     for record in records:
-        all_combos = []
 
         print(colored("[+] Brute-forcing {} endpoints on {}".format(len(wordlist), record), "yellow"))
         for word in wordlist:
@@ -114,8 +114,8 @@ def main():
             else:
                 all_combos.append(str(record+"/"+word))
 
-        results = pool.map(gather_ntlm_info, all_combos)
-        results = [x for x in results if x]
+    results = pool.map(gather_ntlm_info, all_combos)
+    results = [x for x in results if x]
     if results:
         write_records_to_csv(results, args.outfile)
         print(colored('[+] All done! Output saved to {}. Happy hacking!'.format(args.outfile), 'green'))
