@@ -119,7 +119,7 @@ def main():
     results = [x for x in results if x]
     if results:
         write_records_to_csv(results, args.outfile)
-        print(colored('[+] Info dor domain {} saved to {}. Happy hacking!'.format(record, args.outfile), 'green'))
+        print(colored('[+] Output saved to {}. Happy hacking!'.format(args.outfile), 'green'))
 
 
 
