@@ -19,44 +19,9 @@ def _cidr_to_iplist(cidr):
         return False
 
 
-def readfile_and_gen_input(file, shuffle=False):
+def _identify_and_return_records(inputstr, shuffle=False):
     master_records = []
-    try:
-        with open(file, 'r') as fr:
-            lines = fr.read().split('\n')
-    except FileNotFoundError:
-        print("[!] Input file specified by you does not exist. Please check file path and location")
-        sys.exit()
-    except OSError:
-        print("[!] Unable to open the file. Please check file path and permissions!")
-        sys.exit()
-    else:
-        for line in lines:
-            if not line:
-                continue
-            # See if matches a CIDR and pass it on to IP list function
-            if re.match(CIDR_REGEX, line):
-                # Get results and add https prefix to it and pass it to master records
-                iplist = ["https://" + str(x) for x in _cidr_to_iplist(line)]
-                master_records.extend(iplist)
-            # Keep in intact after adding http prefix for all URL_REGEX URLs
-            elif re.match(URL_REGEX, line):
-                if line.startswith("http://") or line.startswith("https://"):
-                    master_records.append(line)
-                else:
-                    master_records.append("https://"+str(line))
-            elif re.match(HOST_REGEX, line):
-                master_records.append("https://"+str(line))
 
-        if shuffle:
-            random.shuffle(master_records)
-            return master_records
-        else:
-            return master_records
-
-
-def read_input_and_gen_list(inputstr, shuffle=False):
-    master_records = []
     if re.match(CIDR_REGEX, inputstr):
         # Get results and add https prefix to it and pass it to master records
         iplist = ["https://" + str(x) for x in _cidr_to_iplist(inputstr)]
@@ -75,6 +40,34 @@ def read_input_and_gen_list(inputstr, shuffle=False):
         return master_records
     else:
         return master_records
+
+
+def readfile_and_gen_input(file, shuffle=False):
+    master_records = []
+    try:
+        with open(file, 'r') as fr:
+            lines = fr.read().split('\n')
+    except FileNotFoundError:
+        print("[!] Input file specified by you does not exist. Please check file path and location")
+        sys.exit()
+    except OSError:
+        print("[!] Unable to open the file. Please check file path and permissions!")
+        sys.exit()
+    else:
+        for line in lines:
+            if not line:
+                continue
+            else:
+                master_records.extend(_identify_and_return_records(line, shuffle))
+
+        return master_records
+
+
+def read_input_and_gen_list(inputstr, shuffle=False):
+    master_records = []
+    master_records.extend(_identify_and_return_records(inputstr, shuffle))
+    return master_records
+
 
 
 

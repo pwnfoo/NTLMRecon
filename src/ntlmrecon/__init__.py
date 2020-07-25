@@ -32,24 +32,19 @@ def in_found_domains(url):
 
 def write_records_to_csv(records, filename):
     if os.path.exists(filename):
-        with open(filename, 'a') as file:
-            writer = csv.writer(file)
-            for record in records:
-                csv_record = list()
-                url = list(record.keys())[0]
-                csv_record.append(url)
-                csv_record.extend(list(record[url]['data'].values()))
-                writer.writerow(csv_record)
+        append_write = 'a'
     else:
-        with open(filename, 'w+') as file:
-            writer = csv.writer(file)
-            writer.writerow(['URL', 'AD Domain Name', 'Server Name', 'DNS Domain Name', 'FQDN', 'Parent DNS Domain'])
-            for record in records:
-                csv_record = list()
-                url = list(record.keys())[0]
-                csv_record.append(url)
-                csv_record.extend(list(record[url]['data'].values()))
-                writer.writerow(csv_record)
+        append_write = 'w+'
+
+    with open(filename, append_write) as file:
+        writer = csv.writer(file)
+        writer.writerow(['URL', 'AD Domain Name', 'Server Name', 'DNS Domain Name', 'FQDN', 'Parent DNS Domain'])
+        for record in records:
+            csv_record = list()
+            url = list(record.keys())[0]
+            csv_record.append(url)
+            csv_record.extend(list(record[url]['data'].values()))
+            writer.writerow(csv_record)
 
 
 def main():
@@ -68,7 +63,8 @@ def main():
     parser.add_argument('--force-all', help="Force enumerate all endpoints even if a valid endpoint is found for a URL "
                                             "(Default : False)", default=False, action="store_true")
     parser.add_argument('--shuffle', help="Break order of the input files", default=False, action="store_true")
-    parser.add_argument('-f', '--force', help="Force replace output file if it already exists", action="store_true", default=False)
+    parser.add_argument('-f', '--force', help="Force replace output file if it already exists", action="store_true",
+                        default=False)
     args = parser.parse_args()
 
     if not args.input and not args.infile:
@@ -104,22 +100,19 @@ def main():
     else:
         wordlist = INTERNAL_WORDLIST
     # Identify all URLs with web servers running
-    all_combos = []
-    results = None
     for record in records:
+        all_combos = []
         for word in wordlist:
             if word.startswith('/'):
                 all_combos.append(str(record+word))
             else:
                 all_combos.append(str(record+"/"+word))
 
-    results = pool.map(gather_ntlm_info, all_combos)
-    results = [x for x in results if x]
-    if results:
-        write_records_to_csv(results, args.outfile)
-        print(colored('[+] Output saved to {}. Happy hacking!'.format(args.outfile), 'green'))
-    else:
-        print(colored('[!] No endpoints found :(', 'red'))
+        results = pool.map(gather_ntlm_info, all_combos)
+        results = [x for x in results if x]
+        if results:
+            write_records_to_csv(results, args.outfile)
+            print(colored('[+] Output for {} saved to {} '.format(record, args.outfile), 'green'))
 
 
 
