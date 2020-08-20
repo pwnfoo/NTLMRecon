@@ -101,6 +101,7 @@ def main():
         wordlist = INTERNAL_WORDLIST
     # Identify all URLs with web servers running
     for record in records:
+        print(colored("[+] Brute-forcing {} endpoints on {}".format(len(wordlist), record), "yellow"))
         all_combos = []
         for word in wordlist:
             if word.startswith('/'):
