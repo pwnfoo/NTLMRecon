@@ -38,7 +38,8 @@ def write_records_to_csv(records, filename):
 
     with open(filename, append_write) as file:
         writer = csv.writer(file)
-        writer.writerow(['URL', 'AD Domain Name', 'Server Name', 'DNS Domain Name', 'FQDN', 'Parent DNS Domain'])
+        if append_write == 'w+':
+            writer.writerow(['URL', 'AD Domain Name', 'Server Name', 'DNS Domain Name', 'FQDN', 'Parent DNS Domain'])
         for record in records:
             csv_record = list()
             url = list(record.keys())[0]
