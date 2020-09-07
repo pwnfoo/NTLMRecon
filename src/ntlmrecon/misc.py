@@ -29,6 +29,7 @@ INTERNAL_WORDLIST = [
     "/CertProv",
     "/CertSrv/",
     "/Conf/",
+    "/debug/",
     "/deviceupdatefiles_ext/",
     "/deviceupdatefiles_int/",
     "/dialin",
