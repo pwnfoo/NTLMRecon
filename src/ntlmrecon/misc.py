@@ -65,4 +65,5 @@ INTERNAL_WORDLIST = [
     "/UnifiedMessaging/",
     "/WebTicket",
     "/WebTicket/WebTicketService.svc",
+    "_windows/default.aspx?ReturnUrl=/",
 ]
