@@ -12,7 +12,7 @@ def print_banner():
 
              """ + colored("""v.0.4 beta - Y'all still exposing NTLM endpoints?
 """, 'green') + colored("""
- Bug Reports, Feature Requests : https://github.com/sachinkamath/NTLMRecon
+ Bug Reports, Feature Requests : https://git.io/JIR5z
 
 """, "cyan"), 'red'))
 
