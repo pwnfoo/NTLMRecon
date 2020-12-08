@@ -64,34 +64,43 @@ If you're on Arch Linux or any Arch linux based distribution, you can grab the l
 # Usage
 
 <pre>
+$ ntlmrecon --help
 
- $ ntlmrecon --help                                                                                                                                                                                                                                 
-
-         _   _ _____ _     ___  _________                     
-        | \ | |_   _| |    |  \/  || ___ \                    
-        |  \| | | | | |    | .  . || |_/ /___  ___ ___  _ __  
-        | . ` | | | | |    | |\/| ||    // _ \/ __/ _ \| '_ \ 
+         _   _ _____ _     ___  _________
+        | \ | |_   _| |    |  \/  || ___ \
+        |  \| | | | | |    | .  . || |_/ /___  ___ ___  _ __
+        | . ` | | | | |    | |\/| ||    // _ \/ __/ _ \| '_ \
         | |\  | | | | |____| |  | || |\ \  __/ (_| (_) | | | |
-        \_| \_/ \_/ \_____/\_|  |_/\_| \_\___|\___\___/|_| |_|
+        \_| \_/ \_/ \_____/\_|  |_/\_| \_\___|\___\___/|_| |_| - @pwnfoo
 
-             v.0.2 beta - Y'all still exposing NTLM endpoints?
+             v.0.4 beta - Y'all still exposing NTLM endpoints?
+
+ Bug Reports, Feature Requests : https://git.io/JIR5z
 
 
-usage: ntlmrecon [-h] [--input INPUT | --infile INFILE] [--wordlist WORDLIST] [--threads THREADS] [--output-type] [--outfile OUTFILE] [--random-user-agent] [--force-all] [--shuffle] [-f]
+usage: ntlmrecon [-h] [--input INPUT | --infile INFILE] [--wordlist WORDLIST]
+                 [--threads THREADS] [--output-type] [--outfile OUTFILE]
+                 [--random-user-agent] [--force-all] [--shuffle] [-f]
 
 optional arguments:
-  -h, --help           show this help message and exit
-  --input INPUT        Pass input as an IP address, URL or CIDR to enumerate NTLM endpoints
-  --infile INFILE      Pass input from a local file
-  --wordlist WORDLIST  Override the internal wordlist with a custom wordlist
-  --threads THREADS    Set number of threads (Default: 10)
-  --output-type, -o    Set output type. JSON (TODO) and CSV supported (Default: CSV)
-  --outfile OUTFILE    Set output file name (Default: ntlmrecon.csv)
-  --random-user-agent  TODO: Randomize user agents when sending requests (Default: False)
-  --force-all          Force enumerate all endpoints even if a valid endpoint is found for a URL (Default : False)
-  --shuffle            Break order of the input files
-  -f, --force          Force replace output file if it already exists
-
+  -h, --help            show this help message and exit
+  --input INPUT, -i INPUT
+                        Pass input as an IP address, URL or CIDR to enumerate
+                        NTLM endpoints
+  --infile INFILE, -I INFILE
+                        Pass input from a local file
+  --wordlist WORDLIST   Override the internal wordlist with a custom wordlist
+  --threads THREADS     Set number of threads (Default: 10)
+  --output-type, -o     Set output type. JSON (TODO) and CSV supported
+                        (Default: CSV)
+  --outfile OUTFILE, -O OUTFILE
+                        Set output file name (Default: ntlmrecon.csv)
+  --random-user-agent   TODO: Randomize user agents when sending requests
+                        (Default: False)
+  --force-all           Force enumerate all endpoints even if a valid endpoint
+                        is found for a URL (Default : False)
+  --shuffle             Break order of the input files
+  -f, --force           Force replace output file if it already exists
 
 </pre>
 
