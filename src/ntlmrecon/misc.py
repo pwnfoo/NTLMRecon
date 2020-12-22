@@ -20,6 +20,7 @@ def print_banner():
 INTERNAL_WORDLIST = [
     "/abs",
     "/adfs/services/trust/2005/windowstransport",
+    "/adfs/ls/wia",
     "/aspnet_client/",
     "/Autodiscover",
     "/Autodiscover/AutodiscoverService.svc/root",
