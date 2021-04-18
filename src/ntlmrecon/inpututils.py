@@ -67,8 +67,3 @@ def read_input_and_gen_list(inputstr, shuffle=False):
     master_records = []
     master_records.extend(_identify_and_return_records(inputstr, shuffle))
     return master_records
-
-
-
-
-
