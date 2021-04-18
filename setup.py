@@ -14,6 +14,8 @@ setup(
 
     description='A tool to enumerate information from NTLM authentication enabled web endpoints',  # Optional
 
+    license='MIT',
+    
     long_description=long_description,  # Optional
 
     long_description_content_type='text/markdown',  # Optional (see note above)
