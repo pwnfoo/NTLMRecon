@@ -14,14 +14,6 @@ NTLMRecon is built with flexibilty in mind. Need to run recon on a single URL, a
 
 [![asciicast](https://asciinema.org/a/e4ggPBbzpJj9cIWRwK67D8xnw.svg)](https://asciinema.org/a/e4ggPBbzpJj9cIWRwK67D8xnw)
 
-# TODO
-
-1. Implement aiohttp based solution for sending requests
-2. Integrate a spraying library
-3. Add other authentication schemes found to the output
-4. Automatic detection of autodiscover domains if domain
-
-
 # Overview
 
 NTLMRecon looks for NTLM enabled web endpoints, sends a fake authentication request and enumerates the following information from the NTLMSSP response:
@@ -42,7 +34,6 @@ On every successful discovery of a NTLM enabled web endpoint, the tool enumerate
 | https://contoso.com/EWS/ 	| XCORP       	| EXCHANGE01  	| xcorp.contoso.net 	| EXCHANGE01.xcorp.contoso.net 	| contoso.net 	|
 
 # Installation
-
 
 ### BlackArch
 
@@ -134,10 +125,18 @@ To run recon with an input file, just run :
 
 `$ ntlmrecon --infile /path/to/input/file --outfile ntlmrecon-fromfile.csv`
 
+# TODO
+
+1. Implement aiohttp based solution for sending requests
+2. Integrate a spraying library
+3. Add other authentication schemes found to the output
+4. Automatic detection of autodiscover domains if domain
+
 # Acknowledgements
 
 * [@nyxgeek](https://github.com/nyxgeek) for the idea behind [ntlmscan](https://github.com/nyxgeek/ntlmscan).
 
+
 # Feedback
 
-If you'd like to see a feature added into the tool or something doesn't work for you, please open a new [issue](https://github.com/sachinkamath/ntlmrecon/issues/new).
+If you'd like to see a feature added into the tool or something doesn't work for you, please open a new [issue](https://github.com/pwnfoo/ntlmrecon/issues/new).
