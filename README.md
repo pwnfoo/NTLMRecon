@@ -54,7 +54,7 @@ If you're on Arch Linux or any Arch linux based distribution, you can grab the l
 
 ### Build from source
 
-1. Clone the repository             : `git clone https://github.com/sachinkamath/ntlmrecon/`
+1. Clone the repository             : `git clone https://github.com/pwnfoo/ntlmrecon/`
 2. RECOMMENDED - Install virtualenv : `pip install virtualenv`
 3. Start a new virtual environment  : `virtualenv venv` and activate it with `source venv/bin/activate`
 4. Run the setup file               : `python setup.py install`
@@ -117,7 +117,7 @@ optional arguments:
 
 ### Recon on an input file
 
-The tool automatically detects the type of input per line and gives you results automatically. CIDR ranges are expanded automatically even when read from a text file.
+The tool automatically detects the type of input per line and takes actions accordingly. CIDR ranges are expanded by default (please note that there is no de-duplication baked in just yet!)
 
 Input file can be something as mixed up as :
 
