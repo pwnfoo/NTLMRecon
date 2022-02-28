@@ -188,9 +188,6 @@ def detect_ntlm_auth(url):
                 if 'WWW-Authenticate' in response_headers.keys():
                     if 'NTLM' in response_headers['WWW-Authenticate']:
                         print(colored("[+] {} has NTLM authentication enabled!".format(url), 'green'))
-                        if '/ecp/' in url.lower():
-                            print(colored("  [!] /ecp/ endpoint might be vulnerable to CVE-2020-0688."
-                                          " Try running https://github.com/Ridter/cve-2020-0688", "red"))
                         return True
                     else:
                         print(colored("[+] {} requires authentication but the method was found to be {}".format(
