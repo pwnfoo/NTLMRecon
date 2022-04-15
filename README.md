@@ -4,15 +4,10 @@
  
 # NTLMRecon
 
-A fast and flexible NTLM reconnaissance tool without external dependencies. Useful to find out information about NTLM endpoints when working with a large set of potential IP addresses and domains.
+An NTLM reconnaissance tool without external dependencies. Useful to find out information about NTLM endpoints when working with a large set of potential IP addresses and domains.
 
 
 NTLMRecon is built with flexibilty in mind. Need to run recon on a single URL, an IP address, an entire CIDR range or combination of all of it all put in a single input file? No problem! NTLMRecon got you covered. Read on.
-
-
-# Demo
-
-[![asciicast](https://asciinema.org/a/e4ggPBbzpJj9cIWRwK67D8xnw.svg)](https://asciinema.org/a/e4ggPBbzpJj9cIWRwK67D8xnw)
 
 # Overview
 
@@ -39,10 +34,6 @@ On every successful discovery of a NTLM enabled web endpoint, the tool enumerate
 
 NTLMRecon is already packaged for BlackArch and can be installed by running `pacman -S ntlmrecon`
 
-### Arch 
-
-If you're on Arch Linux or any Arch linux based distribution, you can grab the latest build from the [Arch User Repository](https://aur.archlinux.org/packages/ntlmrecon/).
-
 ### Build from source
 
 1. Clone the repository             : `git clone https://github.com/pwnfoo/ntlmrecon/`
@@ -50,51 +41,6 @@ If you're on Arch Linux or any Arch linux based distribution, you can grab the l
 3. Start a new virtual environment  : `virtualenv venv` and activate it with `source venv/bin/activate`
 4. Run the setup file               : `python setup.py install`
 5. Run ntlmrecon                    : `ntlmrecon --help`
-
-
-# Usage
-
-<pre>
-$ ntlmrecon --help
-
-         _   _ _____ _     ___  _________
-        | \ | |_   _| |    |  \/  || ___ \
-        |  \| | | | | |    | .  . || |_/ /___  ___ ___  _ __
-        | . ` | | | | |    | |\/| ||    // _ \/ __/ _ \| '_ \
-        | |\  | | | | |____| |  | || |\ \  __/ (_| (_) | | | |
-        \_| \_/ \_/ \_____/\_|  |_/\_| \_\___|\___\___/|_| |_| - @pwnfoo
-
-             v.0.4 beta - Y'all still exposing NTLM endpoints?
-
- Bug Reports, Feature Requests : https://git.io/JIR5z
-
-
-usage: ntlmrecon [-h] [--input INPUT | --infile INFILE] [--wordlist WORDLIST]
-                 [--threads THREADS] [--output-type] [--outfile OUTFILE]
-                 [--random-user-agent] [--force-all] [--shuffle] [-f]
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --input INPUT, -i INPUT
-                        Pass input as an IP address, URL or CIDR to enumerate
-                        NTLM endpoints
-  --infile INFILE, -I INFILE
-                        Pass input from a local file
-  --wordlist WORDLIST   Override the internal wordlist with a custom wordlist
-  --threads THREADS     Set number of threads (Default: 10)
-  --output-type, -o     Set output type. JSON (TODO) and CSV supported
-                        (Default: CSV)
-  --outfile OUTFILE, -O OUTFILE
-                        Set output file name (Default: ntlmrecon.csv)
-  --random-user-agent   TODO: Randomize user agents when sending requests
-                        (Default: False)
-  --force-all           Force enumerate all endpoints even if a valid endpoint
-                        is found for a URL (Default : False)
-  --shuffle             Break order of the input files
-  -f, --force           Force replace output file if it already exists
-
-</pre>
-
 
 ## Example Usage
 
@@ -110,7 +56,8 @@ optional arguments:
 
 The tool automatically detects the type of input per line and takes actions accordingly. CIDR ranges are expanded by default (please note that there is no de-duplication baked in just yet!)
 
-Input file can be something as mixed up as :
+
+P.S Handles a good mix like this well :
 
 <pre>
 mail.contoso.com
@@ -119,11 +66,6 @@ CONTOSOHOSTNAME
 192.168.222.1/24
 https://mail.contoso.com
 </pre>
-
-
-To run recon with an input file, just run :
-
-`$ ntlmrecon --infile /path/to/input/file --outfile ntlmrecon-fromfile.csv`
 
 # TODO
 
@@ -135,8 +77,3 @@ To run recon with an input file, just run :
 # Acknowledgements
 
 * [@nyxgeek](https://github.com/nyxgeek) for the idea behind [ntlmscan](https://github.com/nyxgeek/ntlmscan).
-
-
-# Feedback
-
-If you'd like to see a feature added into the tool or something doesn't work for you, please open a new [issue](https://github.com/pwnfoo/ntlmrecon/issues/new).
