@@ -62,6 +62,7 @@ INTERNAL_WORDLIST = [
     "/Rpc/",
     "/RpcWithCert/",
     "/scheduler",
+    "/sso",
     "/Ucwa",
     "/UnifiedMessaging/",
     "/WebTicket",
