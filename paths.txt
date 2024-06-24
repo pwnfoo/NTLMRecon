@@ -41,6 +41,7 @@
 /Rpc/
 /RpcWithCert/
 /scheduler
+/sso
 /Ucwa
 /UnifiedMessaging/
 /WebTicket
