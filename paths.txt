@@ -1,5 +1,6 @@
 /abs
 /adfs/services/trust/2005/windowstransport
+/api/
 /aspnet_client/
 /Autodiscover
 /Autodiscover/AutodiscoverService.svc/root
@@ -33,6 +34,7 @@
 /PowerShell/
 /Public/
 /Reach/sip.svc
+/reports/
 /RequestHandler/
 /RequestHandlerExt
 /RequestHandlerExt/
